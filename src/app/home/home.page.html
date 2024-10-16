@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Vet Apolo</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngIf="user$ | async as user; else login">
+    <ion-card-header>
+      <ion-card-title>Bem-vindo, {{ user.email }} !</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Aqui você pode encontrar nossos serviços e agendar consultas.
+    </ion-card-content>
+  </ion-card>
+
+  <ng-template #login>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Bem-vindo à Clínica Veterinária!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Para acessar nossos serviços, faça o login.
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
+  <ion-button expand="full" routerLink="/services">Ver Serviços</ion-button>
+  <ion-button expand="full" routerLink="/contato">Contatos</ion-button>
+  <ion-card  class="card-cont">
+    <ion-card-header>
+      <ion-card-title>Promoção de Odontologia para Pets!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Cuide do sorriso do seu amigo! Neste mês, 20% de desconto em todos os serviços odontológicos. Agende já a sua
+        consulta e garanta um sorriso saudável! 🦷✨
+        <br><strong>Válido até o dia 30/11/2024</strong></p>
+      <ion-img src="../../assets/img/caodent.jpg" alt="Veterinária abraçando um cachorro"
+        class="rounded-img"></ion-img>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="card-cont">
+    <ion-card-header>
+      <ion-card-title>Compromisso com o Melhor</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Na nossa clínica veterinária, oferecemos um atendimento especializado e acolhedor para todos os tipos de
+        consultas.
+        Nossos veterinários experientes estão prontos para avaliar a saúde do seu pet, oferecer orientações e realizar
+        exames
+        com total dedicação. Valorizamos cada momento com nossos pacientes e garantimos que você e seu animalzinho se
+        sintam
+        confortáveis e bem informados. Agende sua consulta e venha experimentar o nosso compromisso com o bem-estar do
+        seu
+        melhor amigo!</p>
+      <ion-img src="../../assets/img/cao-abraco.jpg" alt="Veterinária abraçando um cachorro"
+        class="rounded-img"></ion-img>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-cont">
+    <ion-card-header>
+      <ion-card-title>Nosso Aumigo de Toda Vida</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Nosso espaço é dedicado à saúde e bem-estar dos seus pets! Aqui, você encontra dicas, cuidados essenciais e
+        informações sobre nossos serviços veterinários. Juntos, podemos garantir a felicidade e a saúde do seu melhor
+        amigo!</p>
+      <ion-img src="../../assets/img/apolo1.jpg" alt="Cachorro lindo sentado" class="rounded-img">
+      </ion-img>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-cont">
+    <ion-card-header>
+      <ion-card-title>Compromisso com o Melhor</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Temos cuidado especializado, acompanhamos toda a evolução e todos os cuidados do seu pet, desde jovem até a
+        fase adulta.</p>
+      <ion-img src="../../assets/img/apolo3.jpg" alt="Cachorro lindo filhote" class="rounded-img"></ion-img>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-footer>
+    <ion-toolbar>
+      <div class="footer-content">
+        <p>&copy; 2024 Veterinária Apolo. Todos os direitos reservados.</p>
+        <a href="/contato">Contato</a> | <a href="/home">Inicial</a>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>

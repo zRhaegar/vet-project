@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="container-logo">
+    <ion-img class="logo-vet"
+      src="../../assets/img/logo-vet.png"
+      alt="logo da empresa, cachorro e gato juntos"></ion-img>
+  </div>
+
+  <form (ngSubmit)="login()" [formGroup]="credentials">
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="emailControl?.dirty || (emailControl?.touched && emailControl?.errors)">
+        <span *ngIf="emailControl?.errors?.['required']">Email é obrigatório</span>
+        <span *ngIf="emailControl?.errors?.['email']">Email inválido</span>
+      </ion-note>
+    </ion-item>
+    
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="passwordControl?.dirty || (passwordControl?.touched && passwordControl?.errors)">
+        <span *ngIf="passwordControl?.errors?.['required']">Senha é obrigatória</span>
+        <span *ngIf="passwordControl?.errors?.['minlength']">A senha deve ter pelo menos 6 caracteres</span>
+      </ion-note>
+    </ion-item>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+    
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    
+    <ion-button class="btn-login-cad" type="submit" expand="block" [disabled]="!credentials.valid">Entrar</ion-button>
+
+    <ion-button type="button" expand="block" (click)="register()">Criar conta</ion-button>
+    
+    <ion-button expand="full" (click)="loginWithGoogle()">
+      <ion-icon slot="start" name="logo-google"></ion-icon>
+      Login com Google
+    </ion-button>
+  </form>
+
+ 
+  <ion-row>
+    <ion-col>
+      <ion-button fill="clear" routerLink="/reset-password" expand="full">Esqueci minha senha</ion-button>
+
+    </ion-col>
+  </ion-row>
+</ion-content>

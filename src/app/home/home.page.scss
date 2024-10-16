@@ -1,0 +1,73 @@
+ion-avatar {
+    width: 128px;
+    height: 128px;
+  }
+  
+  .preview {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .fallback {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background: #bfbfbf;
+    cursor: pointer;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+  }
+
+  .useremail{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-style: bold;
+  }
+
+  p{
+    font-size: 18px;
+    color: rgb(31, 31, 73);
+    
+  }
+  .rounded-img {
+    border-radius: 15px; 
+    width: 100%; 
+    height: auto; 
+  }
+  ion-card ion-img {
+    border-radius: 15px;
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+  }
+
+
+  .card-cont {
+    background-color: #c9c9c9; 
+    border: 2px solid #6d84e9; 
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+
+
+  .footer-content {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+    
+  }
+
+  .footer-content a {
+    color: black;
+  }
+  .footer-content p{
+    font-size: 15px;
+  }

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Histórico de Consultas</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let consulta of consultas">
+      <ion-label>
+        <p>Serviço: <strong>{{ consulta.service }}</strong></p>
+        <h2>{{ consulta.animalName }}</h2>
+        <p>Data: {{ consulta.date }} às {{ consulta.time }}</p>
+        <p>Status: <strong>{{ consulta.status || 'Pendente' }}</strong></p> <!-- Exibe o status, padrão 'Pendente' se não definido -->
+      </ion-label>
+      <ion-button *ngIf="consulta.id" (click)="editarConsulta(consulta.id)" color="primary">Editar</ion-button>
+      <ion-button *ngIf="consulta.id" (click)="cancelConsulta(consulta.id)" color="danger">Cancelar</ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-content">
+      <p>&copy; 2024 Veterinária Apolo. Todos os direitos reservados.</p>
+      <a href="/contato">Contato</a> | <a href="/home">Inicial</a>
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Serviços</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="services">
+  <ion-list>
+    <ion-item>
+      <ion-label>Consulta Geral</ion-label>
+      <ion-button slot="end" [routerLink]="['/booking']" [queryParams]="{ service: 'Consulta Geral' }">Agendar</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Vacinação</ion-label>
+      <ion-button slot="end" [routerLink]="['/booking']" [queryParams]="{ service: 'Vacinação' }">Agendar</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Exames</ion-label>
+      <ion-button slot="end" [routerLink]="['/booking']" [queryParams]="{ service: 'Exames' }">Agendar</ion-button>
+    </ion-item>    
+    <ion-item>
+      <ion-label>Odontologia</ion-label>
+      <ion-button slot="end" [routerLink]="['/booking']" [queryParams]="{ service: 'Odontologia' }">Agendar</ion-button>
+    </ion-item>  
+    
+    
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-content">
+      <p>&copy; 2024 Veterinária Sem nome. Todos os direitos reservados.</p>
+      <a href="/contato">Contato</a> | <a href="/home">Inicial</a>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+

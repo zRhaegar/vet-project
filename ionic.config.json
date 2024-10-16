@@ -1,0 +1,7 @@
+{
+  "name": "vet-project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

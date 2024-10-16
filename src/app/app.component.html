@@ -1,0 +1,37 @@
+<ion-app>
+  <ion-menu side="start" menuId="first" contentId="main-content">
+    <ion-header>
+      
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>   <!-- SE EU QUISER POR NO MENU EM CIMA /   
+        <div *ngIf="email" style="padding: 16px; font-weight: bold;">
+          {{ email }}
+        </div>-->
+
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item *ngIf="!email" routerLink="/login">Login</ion-item> <!-- Exibe o item de login apenas se o usuário não estiver logado -->
+        <!--<ion-item routerLink="/register">Cadastro</ion-item>-->
+        <ion-item routerLink="/home">Home</ion-item>
+        <ion-item routerLink="/services">Serviços</ion-item>
+        <ion-item  *ngIf="email" routerLink="/historico-consultas">Historico de Consultas</ion-item>
+        <ion-item *ngIf="email" routerLink="/pet-card">Carteirinha PET</ion-item>
+        <ion-item routerLink="/contato">Contatos</ion-item>
+        <ion-item *ngIf="email" routerLink="/change-password">Trocar Senha</ion-item>
+
+        <ion-item routerLink="/home" (click)="logout()" *ngIf="email">Sair</ion-item> <!-- Botão de Sair -->
+        
+
+
+
+      </ion-list>
+      <div *ngIf="email" style="padding: 16px; font-weight: bold;">
+        {{ email }} <!-- Exibe o e-mail do usuário aqui -->
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

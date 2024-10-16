@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contato</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Informações de Contato</h2>
+  <p>Número de Telefone: (21) 99999-9999</p>
+  <p>Email: contato&#64;vetcia.com.br</p>
+  <p>Endereço: Av. Cesário de Melo, 2541, Campo Grande</p>
+  <ion-button expand="full" color="success" href="https://wa.me/5511912345678" target="_blank">
+    Contate-nos pelo WhatsApp
+  </ion-button>
+
+  <div id="map" style="height: 300px; width: 100%;">
+    <iframe
+      [src]="mapUrl"
+      width="100%"
+      height="100%"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Botão para iniciar navegação -->
+  <ion-button expand="full" (click)="navigate()">
+    Navegar até o endereço
+  </ion-button>
+
+  
+</ion-content>

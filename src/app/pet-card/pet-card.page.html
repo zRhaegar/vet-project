@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <!--<ion-back-button defaultHref="/home"></ion-back-button> -->
+    </ion-buttons>
+    <ion-title>Meus Pets</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addNewPet()">
+        Adicionar Pet
+      </ion-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ng-container *ngIf="!isEditing">
+    <ion-card *ngFor="let pet of pets" class="pet-rg">
+      <ion-card-header>
+        <ion-card-title>{{ pet.name }}</ion-card-title>
+        <ion-card-subtitle>ID: {{ pet.idNumber || pet.id }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item class="pet-details">
+            <ion-label class="label-green">Espécie: {{ pet.species }}</ion-label>
+          </ion-item>
+          <ion-item class="pet-details">
+            <ion-label class="label-green">Raça: {{ pet.breed }}</ion-label>
+          </ion-item>
+          <ion-item class="pet-details">
+            <ion-label class="label-green">Nascimento: {{ pet.dateOfBirth | date:'dd/MM/yyyy' }}</ion-label>
+          </ion-item>
+          <ion-item *ngIf="pet.photoUrl">
+            <img [src]="pet.photoUrl" style="width: 100%; height: auto; object-fit: cover;">
+          </ion-item>
+          <ion-item *ngIf="!pet.photoUrl">
+            <ion-label class="label-green">Imagem não disponível</ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" (click)="startEditing(pet)">Editar</ion-button>
+        <ion-button expand="block" color="danger" (click)="deletePet(pet.id)">Excluir</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <form *ngIf="isEditing" [formGroup]="petForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label class="label-green" position="floating">Nome do Pet</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label-green" position="floating">Espécie</ion-label>
+      <ion-input formControlName="species" type="text"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label class="label-green" position="floating">Raça</ion-label>
+      <ion-input  formControlName="breed" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label-green" position="floating">Data de Nascimento</ion-label>
+      <ion-datetime formControlName="dateOfBirth" displayFormat="DD/MM/YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item *ngIf="editingPetId">
+      <ion-label class="label-green" position="floating">ID</ion-label>
+      <ion-input formControlName="idNumber" type="text" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label-green" position="floating"></ion-label>
+      <input  type="file" (change)="uploadImage($event)" accept="image/*" style="display: block;"/>
+    </ion-item>
+    
+    <ion-button expand="block" type="submit" [disabled]="!petForm.valid">
+      {{ editingPetId ? 'Atualizar' : 'Adicionar' }}
+    </ion-button>
+    <ion-button expand="block" (click)="cancelEditing()" color="medium">Cancelar</ion-button>
+  </form>
+</ion-content>
